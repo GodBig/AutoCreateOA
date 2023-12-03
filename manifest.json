@@ -1,0 +1,36 @@
+{
+    // Comments are accepted in the manifest, even though it is JSON.
+    "manifest_version": 3,
+    "name": "中建中东-创建新OA账号",
+    "description": "中建中东-创建新OA账号",
+    "version": "0.0.1",
+    "icons": {
+        "16": "logo/logo-16.png",
+        "48": "logo/logo-48.png",
+        "128": "logo/logo-128.png"
+    },
+    "options_page": "settings/settings.html",
+    "action": {
+        "default_title": "中建中东-创建新OA账号",
+        "default_popup": "popup/popup.html"
+    },
+    "permissions": [
+        "storage"
+    ],
+    "host_permissions": [
+        "https://oa.cscec.ae/*"
+    ],
+    "background": {
+        "service_worker": "background.js"
+    },
+    "content_scripts": [
+        {
+        "js": ["jquery.min.js", "create_oa.js"],
+        "matches": ["https://oa.cscec.ae/seeyon/common/print/captPrintForm.jsp?from=formPrint&isEdge=true&contentType=20&viewState=1&warter=false*"]
+        },
+        {
+            "js": ["jquery.min.js", "create_oa_1.js"],
+            "matches": ["https://oa.cscec.ae/seeyon/main.do?method=main&"]
+        }
+    ]
+}
